@@ -1,42 +1,30 @@
-SQL for table user and table task
-table user
-//C
-insert into user (username, password) value ( 'a', 'b' );
-insert into user (username, password, email) value ( "a", "b", "c" );
-//R
-// query all data
-select * from user;
-// search by user Id
-select * from user where userId = ?;
-// search by username
-select* from user where username = ?;
+-- SQ L for table user and table task
+-- table user
+-- C
+insert into users (username, password) value ( 'a', 'b' );
+insert into users (username, password, email) value ( "a", "b", "c" );
+-- R
+-- query all data
+select * from users;
+-- search by user Id
+select * from users where userId = ?;
+-- search by username
+select* from users where username = ?;
 
-//U
-// update password
-update user
-set password = "new password";
-where userId= ?
-//update username
-update username
-set username = "new username";
-where userId=?
-//update user email
-update username = "new username";
-where userId = ?
+-- U
+-- update password
+update users
+set password = "new password"
+where userId= 101000;
+-- update username
+update users
+set username = "new username"
+where userId=101000;
+-- update user email
+update users 
+set email = "101000@email.com"
+where userId = 101000;
 
-//D
-// delete All data from userId
-delete * from user where userId=?
-
-
-
-
-
-
-
-
-
-
-
-
-
+-- D
+-- delete All data from userId
+delete from users where userId=?;
