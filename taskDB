@@ -1,0 +1,37 @@
+
+table task
+//C
+insert into task (name, description, status) value ( "", "", 0);
+
+//R
+search * from task;
+search * from task where taskId =?
+search * from task where startDate=?
+search * from task where endDate= ?
+search * from task where name = ?
+
+//U
+//update status
+update task
+set task = 1;
+where taskId=?
+
+update task
+set task=0;
+where taskId=?
+
+//update description
+update task
+set description = "";
+where taskId= ?
+
+//update endDate
+update task
+set endDate= "";
+where taskId=?
+
+
+//D
+delete * from task where taskId = ?
+//delete task data by userId
+delete * from task where userId=?
