@@ -1,0 +1,42 @@
+SQL for table user and table task
+table user
+//C
+insert into user (username, password) value ( 'a', 'b' );
+insert into user (username, password, email) value ( "a", "b", "c" );
+//R
+// query all data
+select * from user;
+// search by user Id
+select * from user where userId = ?;
+// search by username
+select* from user where username = ?;
+
+//U
+// update password
+update user
+set password = "new password";
+where userId= ?
+//update username
+update username
+set username = "new username";
+where userId=?
+//update user email
+update username = "new username";
+where userId = ?
+
+//D
+// delete All data from userId
+delete * from user where userId=?
+
+
+
+
+
+
+
+
+
+
+
+
+
