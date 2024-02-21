@@ -1,82 +1,202 @@
+/* Common styles for both pages */
 body {
-    background-color: #f2f2f2;
-}.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 90vh;
-  }
-  
-  .logo-container {
-    position: absolute;
-    top: 0px;
-    left: 20px;
-  }
-  
-  .logo-container img {
-    height: 150px;
-  }
-  
-  .avatar-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .avatar-container img {
-    height: 100px;
-  }
-  
-  .form-container {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .form {
-    width: 300px;
-    padding: 20px;
-    border-radius: 5px;
-    text-align: center; 
-  }
-  
-  .form input[type="text"],
-  .form input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid black;
-    border-radius: 5px;
-  }
-  
-  .form input[type="submit"] {
-    width: 200px;
-    height: 50px;
-    background-color: #2E95F4;
-    color: white;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 15px;
-  }
-  
-  .form p {
-    text-align: center;
-    margin-top: 10px;
-  }
-  
-  .form a {
-    text-decoration: none;
-    color: black;
-  }
+  background-color: #FCE4DE;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 150px;
+  overflow: auto;
+}
+
+.filter-container {
+  display: flex; /* Ensure filters are displayed side by side */
+  justify-content: center; /* Center filters horizontally */
+  margin-bottom: 20px;
+  width: 100%; /* Ensure filters take up full width */
+}
+
+.filter-container label,
+.filter-container select {
+  margin: 0 10px; /* Add some space between filters */
+}
+
+/* Styles specific to the main page (TaskManagementPage.html) */
+#taskTable {
+  margin-top: 20px;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#taskTable th, #taskTable td {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+#taskTable th {
+  background-color: #f0f0f0;
+}
+
+#taskTable th:hover, #taskTable td:hover {
+  background-color: #e0e0e0;
+}
+
+#taskTable tbody tr {
+  background-color: white;
+}
+
+/* Styles specific to the "Add New Item" page (AddNewItemPage.html) */
+form {
+  width: 50%;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input[type="text"],
+textarea,
+select {
+  width: auto; /* Adjusted width to fit content */
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+input[type="date"] {
+  width: auto; /* Adjusted width to fit content */
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+button[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.logout-button {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 9999;
+}
+
+.side-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 180px;
+  height: 100%;
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+
+.side-panel select {
+  width: 120px; /* Adjusted width for thinner dropdowns */
+  margin-bottom: 10px;
+}
+
+.side-panel button {
+  width: 100%;
+}
+
+/* Login */
+
+.logo-container {
+  position: absolute;
+  top: 0px;
+  left: 20px;
+}
+
+.logo-container img {
+  height: 50px;
+}
+
+.avatar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.avatar-container img {
+  height: 100px;
+}
+
+.form-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form {
+  width: 300px;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.form input[type="text"] {
+  width: 107%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.form input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.form input[type="submit"] {
+  width: 200px;
+  height: 50px;
+  background-color: #2E95F4;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.form p {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.form a {
+  text-decoration: none;
+  color: black;
+}
 
 /* Homepage */
 .content-section {
   display: flex;
-  height: 100vh;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
 }
 
 .left-section {
@@ -88,17 +208,26 @@ body {
   justify-content: center;
   color: white;
   padding: 10px;
-  }
+}
 
-  .left-section h1 {
-    font-size: 50px;
-  }
+.left-section h1 {
+  font-size: 50px;
+}
 
 .left-section h1, p {
-    color: #2E95F4;
-  }
+  color: #2E95F4;
+}
 
 .right-section {
   flex: 1;
   background-color: #2E95F4;
+}
+
+.signup-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #2E95F4;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
 }
