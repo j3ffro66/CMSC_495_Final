@@ -4,73 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ComeleteList - Task Status and Filtering Page</title>
-  <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file for styling -->
-  <style>
-    /* Additional styles for the side panel */
-    .side-panel {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 180px; /* Adjusted width */
-      height: 100%;
-      background-color: #f0f0f0;
-      padding: 20px;
-    }
-    .side-panel select {
-      width: 100%;
-      margin-bottom: 10px;
-    }
-    .side-panel button {
-      width: 100%;
-    }
-    
-    /* Additional styles for page layout */
-    body {
-      background-color: #FCE4DE; /* Background color matching the logo */
-      position: relative; /* Added position relative */
-    }
-
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 150px; /* Adjust as needed */
-      margin-left: 280px; /* Added margin to accommodate side panel */
-      overflow: auto; /* Enable vertical scrolling if needed */
-    }
-    #taskTable {
-      margin-top: 20px; /* Adjust as needed */
-      border-collapse: collapse;
-      width: 100%;
-    }
-    #taskTable th, #taskTable td {
-      padding: 10px;
-      border: 1px solid #ccc;
-    }
-    #taskTable th {
-      background-color: #f0f0f0;
-    }
-    #taskTable th:hover, #taskTable td:hover {
-      background-color: #e0e0e0;
-    }
-    #taskTable tbody tr {
-      background-color: white; /* Change list row color to white */
-    }
-    .filter-container {
-      margin-bottom: 20px;
-      position: fixed;
-      top: 120px; /* Adjusted top position */
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    /* Style for the logout button */
-    .logout-button {
-      position: fixed;
-      top: 10px; /* Adjusted top position */
-      right: 10px;
-      z-index: 9999; /* Ensure the button is above other elements */
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
+  
 </head>
 <body>
   <a href="TaskManagementPage.html" class="logout-button">
@@ -88,7 +23,7 @@
       <option value="completed">Completed Tasks</option>
     </select>
     <!-- Create Task Button -->
-    <button id="createTaskBtn">ADD NEW ITEM</button>
+    <a href="AddNewItemPage.html"><button id="createTaskBtn">ADD NEW ITEM</button></a>
   </div>
 
   <div class="container">
@@ -132,37 +67,6 @@
         <!-- Add more task rows as needed -->
       </tbody>
     </table>
-
-    <!-- Form for creating a new task -->
-    <div id="createTaskForm" style="display: none;">
-      <h2>Create New Task</h2>
-      <form id="taskForm">
-        <label for="taskId">Task ID:</label>
-        <input type="text" id="taskId" name="taskId" required><br><br>
-        
-        <label for="taskTitle">Task Title:</label>
-        <input type="text" id="taskTitle" name="taskTitle" required><br><br>
-        
-        <label for="dueDate">Due Date:</label>
-        <input type="date" id="dueDate" name="dueDate" required><br><br>
-        
-        <label for="priority">Priority:</label>
-        <select id="priority" name="priority" required>
-          <option value="High">High</option>
-          <option value="Medium">Medium</option>
-          <option value="Low">Low</option>
-        </select><br><br>
-        
-        <label for="status">Status:</label>
-        <select id="status" name="status" required>
-          <option value="In Progress">In Progress</option>
-          <option value="Completed">Completed</option>
-          <option value="Pending">Pending</option>
-        </select><br><br>
-        
-        <button type="submit">Submit</button>
-      </form>
-    </div>
   </div>
 </body>
 </html>
