@@ -1,10 +1,9 @@
 import express from 'express';
-const router = express.Router();
 //const users = require('../controllers/userController.js');
-import createUser from'../controllers/userController.js';
+
+const router = express.Router();
 
 let message = '';
-
 
 
 router.get('/', (req, res, err) => {

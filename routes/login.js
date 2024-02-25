@@ -1,19 +1,19 @@
 import express from 'express';
-const router = express.Router();
 import {__dirname} from "../app.js";
-import authController from '../controllers/authController.js';
+
+const router = express.Router();
 
 let message = '';
 router.get('/', (req, res, err) => {
-        res.sendFile(__dirname + '/views/login.html');
+    res.sendFile(__dirname + '/views/login.html');
 });
 
 router.post('/', (req, res, err) => {
     const {email, password} = req.body;
-    let status = authController({email, password});
+    //let status = authController({email, password});
 
-    console.log(status);
-            //res.sendFile(__dirname + '/views/TaskManagementPage.html'
+    //console.log(status);
+    res.sendFile(__dirname + '/views/TaskManagementPage.html');
 
 
     /*

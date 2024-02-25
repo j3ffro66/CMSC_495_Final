@@ -1,10 +1,7 @@
 // Import the required modules
 import jwt from 'jsonwebtoken' // Used for generating JSON Web Tokens
-import bcrypt from 'bcryptjs'; // Used for hashing and comparing passwords
-
 import * as dotenv from 'dotenv'; // Loads environment variables from a ..env file into process..env
 dotenv.config();
-import middleLogger from '../app.js';
 
 
 // Define the login function which is exported for use in other files

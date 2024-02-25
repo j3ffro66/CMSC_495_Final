@@ -7,6 +7,7 @@ import indexRouter from './routes/index.js';
 import registerRouter from './routes/register.js';
 import loginRouter from './routes/login.js';
 import taskManagementRouter from './routes/taskmanagement.js';
+import addnewitemRouter from './routes/addnewitem.js';
 
 const app = express();
 
@@ -44,6 +45,7 @@ app.use('/', indexRouter);
 app.use('/signup', registerRouter);
 app.use('/login', loginRouter);
 app.use('/taskmanagementpage', taskManagementRouter);
+app.use('/addnewitem', addnewitemRouter);
 
 
 export default app;

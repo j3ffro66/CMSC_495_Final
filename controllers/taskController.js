@@ -4,7 +4,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 //get Connection
-export default function  pool () {
+export default function pool() {
 
     mysql.createPool({
         host: process.env.MYSQL_HOST,

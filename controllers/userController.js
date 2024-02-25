@@ -1,6 +1,8 @@
 import mysql from 'mysql2'
 import dotenv from 'dotenv'
-export default function () {};
+
+export default function () {
+};
 dotenv.config()
 
 //get Connection
