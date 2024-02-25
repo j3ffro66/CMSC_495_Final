@@ -1,5 +1,6 @@
 import mysql from 'mysql2'
 import dotenv from 'dotenv'
+
 dotenv.config()
 
 //get Connection
@@ -12,10 +13,10 @@ export const pool = mysql.createPool({
 
 
 //Create
-export async function createTask(title, description, userId){
+export async function createTask(title, description, userId) {
     const [result] = await pool.query(
         'INSERT INTO tasks (title, description, userId) VALUES (? ,? , ?)'
-    , [title, description, userId])
+        , [title, description, userId])
     const id = result.insertId
     return getTaskByTId(id)
 }
@@ -26,43 +27,43 @@ export async function createTask(title, description, userId){
 
 //Read
 
-export async function getTasks(){
+export async function getTasks() {
     const [rows] = await pool.query("SELECT * FROM tasks")
     return rows
 }
 
-export async function getTaskByTId(taskId, userId){
+export async function getTaskByTId(taskId, userId) {
     const [rows] = await pool.query(
         'SELECT * FROM tasks WHERE taskId= ?'
-    , [taskId] )
+        , [taskId])
     return rows
 }
 
-export async function getTaskByUId(userId){
+export async function getTaskByUId(userId) {
     const [rows] = await pool.query(
         'SELECT * FROM tasks WHERE userId= ?'
-    , [userId] )
+        , [userId])
     return rows
 }
 
-export async function getTaskByDate(date){
+export async function getTaskByDate(date) {
     const [rows] = await pool.query(
         'SELECT * FROM tasks WHERE dueDate= ?'
-    , [date] )
+        , [date])
     return rows
 }
 
-export async function getTaskByStatus(status){
+export async function getTaskByStatus(status) {
     const [rows] = await pool.query(
         'SELECT * FROM tasks WHERE status= ?'
-    , [status] )
+        , [status])
     return rows
 }
 
-export async function getTaskByPriority(priority){
+export async function getTaskByPriority(priority) {
     const [rows] = await pool.query(
         'SELECT * FROM tasks WHERE priority= ?'
-    , [priority] )
+        , [priority])
     return rows
 }
 
