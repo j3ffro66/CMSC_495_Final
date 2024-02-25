@@ -1,20 +1,20 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const authController = require('../controllers/authController.js');
+import {__dirname} from "../app.js";
+import authController from '../controllers/authController.js';
 
 let message = '';
-
 router.get('/', (req, res, err) => {
-    res.render('login', {message})
+        res.sendFile(__dirname + '/views/login.html');
 });
 
 router.post('/', (req, res, err) => {
     const {email, password} = req.body;
-    authController.login({email, password});
+    let status = authController({email, password});
 
+    console.log(status);
+            //res.sendFile(__dirname + '/views/TaskManagementPage.html'
 
-
-    console.log(status)
 
     /*
     if (success === true) {
@@ -43,4 +43,5 @@ router.post('/', (req, res, err) => {
     */
 });
 
-module.exports = router;
+export default router;
+//module.exports = router;

@@ -1,8 +1,10 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
+import {__dirname} from "../app.js";
 
-router.get('/', (req, res, err) => {
-    res.render('index');
+//Getter method to show main page
+router.get('/',function(req,res){
+    res.sendFile(__dirname + '/views/index.html');
 });
 
-module.exports = router;
+export default router;

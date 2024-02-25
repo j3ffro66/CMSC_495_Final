@@ -1,12 +1,14 @@
 // Import the required modules
-const jwt = require('jsonwebtoken'); // Used for generating JSON Web Tokens
-const bcrypt = require('bcryptjs'); // Used for hashing and comparing passwords
-require('dotenv').config(); // Loads environment variables from a ..env file into process..env
-const middleLogger = require('../app');
+import jwt from 'jsonwebtoken' // Used for generating JSON Web Tokens
+import bcrypt from 'bcryptjs'; // Used for hashing and comparing passwords
+
+import * as dotenv from 'dotenv'; // Loads environment variables from a ..env file into process..env
+dotenv.config();
+import middleLogger from '../app.js';
 
 
 // Define the login function which is exported for use in other files
-exports.login = async (req, res, err) => {
+export const login = async (req, res, err) => {
     // Destructure email and password from the request body
     //const { email, password } = req.body;
     const email = req.email;
@@ -25,7 +27,7 @@ exports.login = async (req, res, err) => {
     if (email !== hardcodedUser.email || password !== hardcodedUser.password) {
         // If the credentials don't match, return a 401 Unauthorized status with an error message
         //return res.status(401).json({ success: false, message: "Invalid credentials" });
-        //return res.render('login',{message: 'Incorrect password!'});
+
 
         return ({success: false, message: "Invalid credentials"});
     }
@@ -35,7 +37,9 @@ exports.login = async (req, res, err) => {
     const token = jwt.sign({email: hardcodedUser.email}, process.env.JWT_SECRET, {expiresIn: '1h'});
 
     // Respond with a JSON object containing the success status and the generated token
-    //res.json({ success: true, token });
+
     return ({success: true, token});
-    //res.render('taskmanagementpage',{message: 'Successfully signed in!'});
+
 };
+
+export default login;

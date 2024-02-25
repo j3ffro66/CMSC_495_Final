@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add New Item - ComeleteList</title>
+  <link rel="stylesheet" href="styles.css"> 
+</head>
+<body>
+  <a href="TaskManagementPage.html" class="logout-button">
+    <img src="User.PNG" alt="Logout" style="width: 40px; height: 40px;">
+  </a>
+  <a href="TaskManagementPage.html">
+    <img src="CompleteListLogo.PNG" alt="CompleteList Logo" style="position: fixed; top: 10px; left: 50%; transform: translateX(-50%); z-index: 9999;">
+  </a>
+
+  <div class="container">
+    <h2>Add New Item</h2>
+    <form id="addNewItemForm">
+      <label for="taskTitle">Task Title:</label>
+      <input type="text" id="taskTitle" name="taskTitle" required>
+
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" rows="4"></textarea>
+
+      <label for="dueDate">Due Date:</label>
+      <input type="date" id="dueDate" name="dueDate" required>
+
+      <label for="priority">Priority:</label>
+      <select id="priority" name="priority" required>
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+      </select>
+
+      <button type="button" id="submitBtn">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('submitBtn').addEventListener('click', function() {
+      // Redirect back to the main page (TaskManagementPage.html)
+      window.location.href = 'TaskManagementPage.html';
+    });
+  </script>
+</body>
+</html>

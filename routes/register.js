@@ -1,9 +1,11 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const users = require('../controllers/userController.js');
-
+//const users = require('../controllers/userController.js');
+import createUser from'../controllers/userController.js';
 
 let message = '';
+
+
 
 router.get('/', (req, res, err) => {
     res.render('signup', {message})
@@ -24,4 +26,5 @@ router.post('/', (req, res, err) => {
      */
 });
 
-module.exports = router;
+
+export default router;

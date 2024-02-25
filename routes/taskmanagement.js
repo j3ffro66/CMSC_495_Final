@@ -1,6 +1,9 @@
-const express = require('express');
+//const express = require('express');
+import express from 'express';
 const router = express.Router();
-const tasks = require('../controllers/taskController.js');
+//const tasks = require('../controllers/taskController.js');
+import tasks from '../controllers/taskController.js';
+
 
 
 router.get('/', (req, res, err) => {
@@ -15,4 +18,5 @@ router.post('/', (req, res, err) => {
     res.render('taskmanagementpage')
 });
 
-module.exports = router;
+
+export default router;
