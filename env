@@ -1,5 +1,0 @@
-JWT_SECRET=mysecretkey
-MYSQL_HOST='localhost'
-MYSQL_USER='root'
-MYSQL_PASSWORD='project4M'
-MYSQL_DATABASE='taskmanagement'

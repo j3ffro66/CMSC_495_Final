@@ -1,46 +1,36 @@
 import express from 'express';
 import {__dirname} from "../app.js";
+import authController from "../controllers/authController.js";
 
 const router = express.Router();
 
 let message = '';
 router.get('/', (req, res, err) => {
+
+
+    console.log('Cookies: ', req.cookies['token'])
+    console.log('Cookies: ', req.cookies['email'])
     res.sendFile(__dirname + '/views/login.html');
 });
 
-router.post('/', (req, res, err) => {
+router.post('/', async (req, res, err) => {
     const {email, password} = req.body;
-    //let status = authController({email, password});
+    let token = await authController({email, password});
+    //console.log(email, password);
+    //console.log(token);
+    //res.sendFile(__dirname + '/views/TaskManagementPage.html');
 
-    //console.log(status);
-    res.sendFile(__dirname + '/views/TaskManagementPage.html');
-
-
-    /*
-    if (success === true) {
-        res.render('taskmanagementpage', {message: 'Successfully signed in!'});
+    if (token === null) {
+        res.sendFile(__dirname + '/views/login.html');
     } else {
-        res.render('login', {message: 'Incorrect password!'});
+        res.cookie('token', token)
+            .cookie('email', email)
+            //res.setHeader('Authorization', 'You are authorized.')
+            //res.setHeader('token', token)
+            .sendFile(__dirname + '/views/TaskManagementPage.html');
     }
 
-     */
-    /*
-    const { email, password} = req.body
 
-    console.log(email)
-    console.log(password)
-    res.render('taskmanagementpage')
-
-
-
-    if (password === "jeff"){
-        res.render('taskmanagementpage',{message: 'Successfully signed in!'});
-    }
-    else {
-        res.render('login',{message: 'Incorrect password!'})
-    }
-
-    */
 });
 
 export default router;

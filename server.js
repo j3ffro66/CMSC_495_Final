@@ -2,6 +2,31 @@
 import http from 'http';
 // Import
 import app from './app.js'
+import mysql from 'mysql';
+import * as dotenv from 'dotenv'; // Loads environment variables from a ...env file into process...env
+dotenv.config();
+
+export const pool = mysql.createPool({
+    host: process.env.MYSQL_HOST,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASSWORD,
+    database: process.env.MYSQL_DATABASE
+})
+pool.getConnection((err, connection) => {
+    if (err) {
+        if (err.code === 'PROTOCOL_CONNECTION_LOST') {
+            console.error('Database connection was closed.')
+        } else if (err.code === 'ER_CON_COUNT_ERROR') {
+            console.error('Database has too many connections.')
+        } else if (err.code === 'ECONNREFUSED') {
+            console.error('Database connection was refused.')
+        } else {
+            console.error()
+        }
+    }
+    if (connection) connection.release()
+})
+
 
 // Retrieve the port number from environment variables with a fallback to 3000 if not specified
 const PORT = process.env.PORT || 3000;

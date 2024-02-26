@@ -1,4 +1,3 @@
-//const express = require('express');
 import express from 'express';
 import path from 'path';
 import {fileURLToPath} from 'url';
@@ -8,12 +7,14 @@ import registerRouter from './routes/register.js';
 import loginRouter from './routes/login.js';
 import taskManagementRouter from './routes/taskmanagement.js';
 import addnewitemRouter from './routes/addnewitem.js';
+import cookieParser from 'cookie-parser'
 
 const app = express();
 
+
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
-//app.use(cookieParser());
+app.use(cookieParser());
 
 
 const __filename = fileURLToPath(import.meta.url);

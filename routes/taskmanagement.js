@@ -1,11 +1,21 @@
 import express from 'express';
 import {__dirname} from "../app.js";
+import verifyjwt from "../controllers/verifyController.js";
 
 const router = express.Router();
 
 
-router.get('/', (req, res, err) => {
-    res.sendFile(__dirname + '/views/TaskManagementPage.html');
+router.get('/', async (req, res, err) => {
+
+    let authorized = await verifyjwt();
+    console.log(authorized)
+    if (authorized === null) {
+        console.log('4')
+        res.sendFile(__dirname + '/views/login.html');
+    } else {
+        res.sendFile(__dirname + '/views/TaskManagementPage.html');
+    }
+    //res.sendFile(__dirname + '/views/TaskManagementPage.html');
 });
 
 /*
