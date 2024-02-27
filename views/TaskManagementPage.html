@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ComeleteList - Task Status and Filtering Page</title>
+    <link rel="stylesheet" href="/css/styles.css">
+
+</head>
+<body>
+<a href="./TaskManagementPage" class="logout-button">
+    <img src="/images/User.PNG" alt="Logout" style="width: 40px; height: 40px;">
+</a>
+<a href="./TaskManagementPage">
+    <img src="/images/CompletList_Black_Logo.png" alt="CompleteList Logo"
+         style="position: fixed; top: 10px; left: 50%; transform: translateX(-50%); z-index: 9999;">
+</a>
+<div class="side-panel">
+    <h3>View Options</h3>
+    <select id="viewOptions">
+        <option value="today">Today View</option>
+        <option value="weekly">Weekly View</option>
+        <option value="monthly">Monthly View</option>
+        <option value="completed">Completed Tasks</option>
+    </select>
+    <!-- Create Task Button -->
+    <a href="./addnewitem">
+        <button id="createTaskBtn">ADD NEW ITEM</button>
+    </a>
+</div>
+
+<div class="container">
+    <div class="filter-container"> <!-- Adjusted position for filter container -->
+        <label for="statusFilter">Status:</label>
+        <select id="statusFilter">
+            <option value="">All</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Completed">Completed</option>
+            <option value="Pending">Pending</option>
+        </select>
+        <label for="priorityFilter">Priority:</label>
+        <select id="priorityFilter">
+            <option value="">All</option>
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+        </select>
+        <!-- Add more filters as needed -->
+    </div>
+
+    <!-- Table to display tasks -->
+    <table id="taskTable">
+        <thead>
+        <tr>
+            <th>Task ID</th>
+            <th>Task Title</th>
+            <th>Due Date</th>
+            <th>Priority</th>
+            <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>Task 1</td>
+            <td>2024-02-14</td>
+            <td>High</td>
+            <td>In Progress</td>
+        </tr>
+        <!-- Add more task rows as needed -->
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
