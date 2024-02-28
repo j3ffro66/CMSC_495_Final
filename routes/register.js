@@ -1,13 +1,20 @@
 import express from 'express';
 //const users = require('../controllers/userController.js');
-
+import sanitizeHtml from 'sanitize-html';
+import {__dirname} from "../app.js";
 const router = express.Router();
 
 let message = '';
 
 
-router.get('/', (req, res, err) => {
-    res.render('signup', {message})
+//Getter method to show register page
+router.get('/', (req, res) => {
+    //If a session is in progress, the page will redirect to the task management page
+    if (req.session.user === undefined) {
+        res.sendFile(__dirname + '/views/signup.html');
+    } else {
+        res.redirect('/TaskManagementPage')
+    }
 });
 
 router.post('/', (req, res, err) => {
