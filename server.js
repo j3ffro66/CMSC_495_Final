@@ -2,7 +2,7 @@
 import http from 'http';
 // Import
 import app from './app.js'
-import mysql from 'mysql';
+import mysql from 'mysql2';
 import * as dotenv from 'dotenv'; // Loads environment variables from a ...env file into process...env
 dotenv.config();
 
@@ -12,6 +12,7 @@ export const pool = mysql.createPool({
     password: process.env.MYSQL_PASSWORD,
     database: process.env.MYSQL_DATABASE
 })
+
 pool.getConnection((err, connection) => {
     if (err) {
         if (err.code === 'PROTOCOL_CONNECTION_LOST') {
@@ -21,10 +22,11 @@ pool.getConnection((err, connection) => {
         } else if (err.code === 'ECONNREFUSED') {
             console.error('Database connection was refused.')
         } else {
-            console.error()
+            console.error(err)
         }
     }
     if (connection) connection.release()
+    console.log('You are now connected...')
 })
 
 
