@@ -72,5 +72,11 @@ app.use('/logout', logoutRouter);
 app.use('/taskmanagementpage', taskManagementRouter);
 app.use('/addnewitem', addnewitemRouter);
 
+//Catch all route to redirect to the main page if a not defined route is attempted
+app.get('*', function(req, res) {
+    if (req.url !== ('/' || 'signup'
+        || '/login' || '/logout'
+        || '/taskmanagementpage' || '/addnewitem')) res.redirect('/');
+});
 
 export default app;

@@ -2,6 +2,7 @@ import express from 'express';
 //const users = require('../controllers/userController.js');
 import sanitizeHtml from 'sanitize-html';
 import {__dirname} from "../app.js";
+import bcrypt from "bcryptjs";
 const router = express.Router();
 
 let message = '';
@@ -17,8 +18,19 @@ router.get('/', (req, res) => {
     }
 });
 
-router.post('/', (req, res, err) => {
-    const {email, password, passwordconfirm} = req.body;
+router.post('/', async (req, res, err) => {
+    const salt = await bcrypt.genSalt(10)
+    const {name, email,
+        hashPass = await bcrypt.hash(req.body.password, salt),
+        confHashPass =  await bcrypt.hash(req.body.confirmpassword, salt)} = req.body;
+
+    //Sanitize input to protect from XSS or SQL Injection
+    const cleanName = sanitizeHtml(req.body.name);
+    const cleanEmail = sanitizeHtml(email);
+    const cleanPassword = sanitizeHtml(hashPass);
+    const cleanConfPassword = sanitizeHtml(confHashPass);
+
+
 
     /*
     if (passwords dont match)

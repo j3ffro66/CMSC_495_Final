@@ -1,18 +1,4 @@
-import mysql from 'mysql2'
-import dotenv from 'dotenv'
-
-export default function () {
-};
-dotenv.config()
-
-//get Connection
-export const pool = mysql.createPool({
-    host: process.env.MYSQL_HOST,
-    user: process.env.MYSQL_USER,
-    password: process.env.MYSQL_PASSWORD,
-    database: process.env.MYSQL_DATABASE
-}).promise()
-
+import pool from '../server.js'
 
 //Create
 export async function createUser(email, password) {
@@ -29,11 +15,6 @@ export async function createUser(email, password) {
 
 //Read
 
-export async function getUsers() {
-    const [rows] = await pool.query("SELECT * FROM users")
-    return rows
-}
-
 export async function getUserById(id) {
     const [rows] = await pool.query(
         'SELECT * FROM users WHERE userId= ?'
@@ -44,3 +25,4 @@ export async function getUserById(id) {
 // const user = await getUserById(101001)
 // console.log(user)
 
+export default createUser;

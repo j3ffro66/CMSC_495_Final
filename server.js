@@ -3,16 +3,47 @@ import http from 'http';
 // Import
 import app from './app.js'
 import mysql from 'mysql2';
+import fs from 'fs';
 import * as dotenv from 'dotenv'; // Loads environment variables from a ...env file into process...env
 dotenv.config();
 
-export const pool = mysql.createPool({
+/*
+const config = {
+    host: process.env.MYSQL_HOST,
+    database: process.env.MYSQL_DATABASE,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASSWORD,
+    ssl: {ca: fs.readFileSync("./DigiCertGlobalRootCA.crt.pem")}
+}
+
+
+const connection = mysql.createConnection(config);
+
+connection.connect(
+    function (err) {
+        if (err) {
+            console.log("!!! Cannot connect !!! Error:");
+            throw err;
+        }
+        else
+        {
+            console.log("Connection established.");
+        }
+    });
+
+ */
+
+
+
+
+export  const  pool = mysql.createPool({
     host: process.env.MYSQL_HOST,
     user: process.env.MYSQL_USER,
     password: process.env.MYSQL_PASSWORD,
-    database: process.env.MYSQL_DATABASE
+    database: process.env.MYSQL_DATABASE,
+    ssl: {ca: fs.readFileSync("./DigiCertGlobalRootCA.crt.pem")}
 })
-
+export default pool;
 pool.getConnection((err, connection) => {
     if (err) {
         if (err.code === 'PROTOCOL_CONNECTION_LOST') {
@@ -28,6 +59,8 @@ pool.getConnection((err, connection) => {
     if (connection) connection.release()
     console.log('You are now connected...')
 })
+
+
 
 
 // Retrieve the port number from environment variables with a fallback to 3000 if not specified

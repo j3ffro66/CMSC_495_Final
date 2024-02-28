@@ -1,35 +1,39 @@
 // Import the required modules
 import bcrypt from 'bcryptjs'
+//import {getUsers} from "./userController.js";
+import pool from '../server.js'
+import req from "express/lib/request.js";
 
 // Define the authentication function which is exported for use in other files
-export const login = async (req, res, err) => {
-    // Destructure email and password from the request body
-    const email = req.cleanEmail;
-    const password = req.cleanPassword;
+ export async function login (email, password)  {
+    pool.query('SELECT * FROM users WHERE email = ? ',[email], function(error, results, fields) {
+        // If there is an issue with the query, output the error
+        if (error) throw error;
+
+        if (results.length > 0) {  // If the account exists, compare hashed password
+            if (bcrypt.compareSync(results[0]['password'], password) === true){// may need to swap this
+                console.log('worky')
+                return 'authorized'
+                }
+               else {
+                    console.log('no worky')
+                    return 'unauthorized'
+                }
+        } else {
+            return 'unauthorized'
+            //response.send('Incorrect Username and/or Password!');
+        }
+    });
 
 
-    // Define a hardcoded user object for demonstration purposes
-    // In a real application, you would fetch this data from a database
 
-    /*
-    NEED SQL CODE TO QUERY USER FROM DATABASE
-    USE userController.js
-     */
 
-    const hardcodedUser = {
-        email: "user@example.com", // The password is plaintext only for this example. In production, use bcrypt to hash passwords.
-        password: "userpassword"
-    };
-
-    // Check if the provided email and password match the hardcoded user's credentials
-    if (email !== hardcodedUser.email || bcrypt.compareSync(hardcodedUser.password, password) === false) {
-        // If the credentials don't match, return an unauthorized statement that will further redirect the user
-        //return res.status(401).json({ success: false, message: "Invalid credentials" });
+        console.log('z')
         return 'unauthorized';
-    }
+
 
     // If the credentials match, return an authorized statement that will further redirect the user
-    return 'authorized';
-};
+
+}
 
 export default login;

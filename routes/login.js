@@ -19,22 +19,18 @@ router.get('/', (req, res) => {
 
 //POST method to authenticate to the task management page
 router.post('/', async (req, res) => {
-    //Hash the password
+    //Hash the password and sanitize input to protect from XSS or SQL Injection
     const salt = await bcrypt.genSalt(10)
-    const {email, hashPass = await bcrypt.hash(req.body.password, salt)} = req.body;
-
-    //Sanitize input to protect from XSS or SQL Injection
-    const cleanEmail = sanitizeHtml(email);
-    const cleanPassword = sanitizeHtml(hashPass);
+    const {email = sanitizeHtml(req.body.email), hashPass = await bcrypt.hash(sanitizeHtml(req.body.password), salt)} = req.body;
 
     //Check the database for a matching user
-    let auth = await authController({cleanEmail, cleanPassword});
-
+    let auth = await authController(email, hashPass);
+    console.log(auth)
     //If there is a match, redirect to task management page, if not redirect to login page
     if (auth === 'unauthorized') {
         res.redirect('/login')
     } else if (auth === 'authorized') {
-        req.session.user = cleanEmail;
+        req.session.user = email;
         res.redirect('/TaskManagementPage');
     }
 });
