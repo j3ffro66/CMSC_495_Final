@@ -21,11 +21,11 @@ router.get('/', (req, res) => {
 router.post('/', async (req, res) => {
     //Hash the password and sanitize input to protect from XSS or SQL Injection
     const salt = await bcrypt.genSalt(10)
-    const {email = sanitizeHtml(req.body.email), hashPass = await bcrypt.hash(sanitizeHtml(req.body.password), salt)} = req.body;
+    const {email = sanitizeHtml(req.body.email), pass = sanitizeHtml(req.body.password)} = req.body;
 
     //Check the database for a matching user
-    let auth = await authController(email, hashPass);
-    console.log(auth)
+    let auth  = await authController(email, pass);
+
     //If there is a match, redirect to task management page, if not redirect to login page
     if (auth === 'unauthorized') {
         res.redirect('/login')

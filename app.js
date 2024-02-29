@@ -4,7 +4,7 @@ import path from 'path';
 import {fileURLToPath} from 'url';
 import fs from 'fs';
 import indexRouter from './routes/index.js';
-import registerRouter from './routes/register.js';
+import signupRouter from './routes/signup.js';
 import loginRouter from './routes/login.js';
 import logoutRouter from './routes/logout.js';
 import taskManagementRouter from './routes/taskmanagement.js';
@@ -66,7 +66,7 @@ app.use(middleLogger);
 
 //Use the middleware routers to navigate pages
 app.use('/', indexRouter);
-app.use('/signup', registerRouter);
+app.use('/signup', signupRouter);
 app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
 app.use('/taskmanagementpage', taskManagementRouter);

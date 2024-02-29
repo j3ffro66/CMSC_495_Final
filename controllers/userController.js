@@ -1,18 +1,23 @@
 import pool from '../server.js'
 
-//Create
-export async function createUser(email, password) {
-    const [result] = await pool.query(
-        'INSERT INTO users (email, password) VALUES (?, ?)'
-        , [email, password])
-    const id = result.insertId
-    return getUserById(id)
+
+//Create User Account
+export async function createUser(username, password, email) {
+    return new Promise(function (resolve) {
+        pool.query('SELECT DISTINCT email FROM users WHERE email =  ?', [email], (error, results) => {
+            // If there is an issue with the query, output the error
+            if (error) throw error;
+
+            if (results.length > 0) {  // If the account exists, do not continue creating account
+                resolve('in use')
+            } else {//Insert user details into database
+                pool.query('INSERT INTO users (username, password, email) VALUES (?, ?,?)'
+                    , [username, password, email])
+                resolve('created')
+            }
+        })
+    });
 }
-
-// const result = await createUser('sakana@gmail.com', 'sakanapass')
-// console.log(result)
-
-
 //Read
 
 export async function getUserById(id) {
