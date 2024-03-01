@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CompleteList - Interactive Task Management</title>
+  <link rel="stylesheet" href="InteractiveStyles.css">
+</head>
+<body>
+  <a href="login.html" class="logout-button">
+    <img src="User.PNG" alt="Logout" style="width: 40px; height: 40px;">
+  </a>
+  <a href="TaskManagementPage.html">
+    <img src="CompleteListLogo.PNG" alt="CompleteList Logo" style="position: fixed; top: 10px; left: 50%; transform: translateX(-50%); z-index: 9999;">
+  </a>
+  <div class="side-panel">
+    <h3>Options</h3>
+    <a href="TaskManagementPage.html"><button id="createTaskBtn">Task  View</button></a>
+    <a href="AddNewItemPage.html"><button id="createTaskBtn">ADD NEW ITEM</button></a>
+  </div>
+
+  <div class="container">
+    <div class="task-list">
+      <h3>Backlog</h3>
+      <div class="task-items">
+        <ul>
+          <li draggable="true">Task 1 - Backlog</li>
+          <li draggable="true">Task 2 - Backlog</li>
+          <!-- Add more backlog tasks as needed -->
+        </ul>
+      </div>
+    </div>
+    <div class="task-list">
+      <h3>In Progress</h3>
+      <div class="task-items">
+        <ul>
+          <li draggable="true">Task 3 - In Progress</li>
+          <li draggable="true">Task 4 - In Progress</li>
+          <!-- Add more in-progress tasks as needed -->
+        </ul>
+      </div>
+    </div>
+    <div class="task-list">
+      <h3>Completed</h3>
+      <div class="task-items">
+        <ul>
+          <li draggable="true">Task 5 - Completed</li>
+          <li draggable="true">Task 6 - Completed</li>
+          <!-- Add more completed tasks as needed -->
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
