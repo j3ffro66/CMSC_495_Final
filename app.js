@@ -22,16 +22,15 @@ app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 
 
-// creating 24 hours from milliseconds = 1000  * 60 * 60 * 24;
-// reduced to 30 seconds for testing purposes
-const oneDay = 1000 * 30;
+// 5 minute logout timer
+const sessionTimer = 1000 * 30 * 5;
 
 //session middleware
 app.use(session({
     name: '_taskmanagement',
     secret: process.env.SESSION_SECRET,
     saveUninitialized: true,
-    cookie: {maxAge: oneDay},
+    cookie: {maxAge: sessionTimer},
     resave: false
 }));
 
@@ -52,7 +51,7 @@ let middleLogger = (req, res, next) => {
     let method = req.method;
     let url = req.url;
     let status = res.statusCode;
-    let log = `[${formatted_date}] ${method}:${url} ${status} ${req.session.user}`;
+    let log = `[${formatted_date}] | ${method}:${url} | ${status} | User ID: ${req.session.user}`;
     console.log(log);
     fs.appendFile("request_logs.txt", log + "\n", err => {
         if (err) {

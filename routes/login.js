@@ -11,7 +11,8 @@ const router = express.Router();
 router.get('/', (req, res) => {
     //If a session is in progress, the page will redirect to the task management page
     if (req.session.user === undefined) {
-        res.sendFile(__dirname + '/views/login.html');
+        res.sendFile((__dirname + '/views/login.html'));
+
     } else {
         res.redirect('/TaskManagementPage')
     }
@@ -29,8 +30,9 @@ router.post('/', async (req, res) => {
     //If there is a match, redirect to task management page, if not redirect to login page
     if (auth === 'unauthorized') {
         res.redirect('/login')
-    } else if (auth === 'authorized') {
-        req.session.user = email;
+    } else  {
+        req.session.user = auth;
+
         res.redirect('/TaskManagementPage');
     }
 });

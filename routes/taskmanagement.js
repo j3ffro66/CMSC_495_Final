@@ -1,6 +1,7 @@
 // Import the required modules
 import express from 'express';
 import {__dirname} from "../app.js";
+import {getTasks} from "../controllers/taskController.js";
 
 const router = express.Router();
 
@@ -10,12 +11,14 @@ router.get('/', async (req, res, err) => {
     if (req.session.user === undefined) {
         res.redirect('/login')
     } else {
-        /*
-        NEED SQL CODE TO QUERY TASKS FROM DATABASE
-         */
-        res.sendFile(__dirname + '/views/TaskManagementPage.html');
+        let taskList = await getTasks()
+
+
+        //res.render('taskmanagement', { title: 'Task List', userData: taskList });
+        res.sendFile((__dirname + '/views/TaskManagementPage.html'));
     }
-});
+})
+
 
 /*
 router.post('/', (req, res, err) => {

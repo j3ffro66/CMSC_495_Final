@@ -2,6 +2,8 @@
 import express from 'express';
 import {__dirname} from "../app.js";
 import sanitizeHtml from 'sanitize-html';
+import {createTask} from "../controllers/taskController.js";
+import req from "express/lib/request.js";
 
 const router = express.Router();
 
@@ -16,17 +18,25 @@ router.get('/', async (req, res, err) => {
 });
 
 //POST method to add tasks to database
-router.post('/', (req, res, err) => {
+router.post('/', async (req, res, err) => {
     // I DON'T THINK THIS WORKS
     const {taskTitle, description, dueDate, priority} = req.body;
-    console.log(taskTitle, description, dueDate, priority)
+    const userId = req.session.user
+    console.log(taskTitle, description, dueDate, priority, userId)
+    let addTask = await createTask(taskTitle, description, dueDate, priority, userId)
 
+    if (addTask === 'created') {
+        console.log('created')
+        res.redirect('/taskmanagementpage');//email in use
+    } else  {
+        console.log('not created')
+        res.redirect('/addnewitem');
+    }
     /*
     NEED SQL CODE TO ADD TASKS FROM DATABASE
     USE taskController.js
      */
 
-    res.redirect('/TaskManagementPage')
 });
 
 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Add New Item - ComeleteList</title>
-    <link href="/public/css/styles.css" rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet">
 </head>
 <body>
 <a class="logout-button" href="./logout">
@@ -17,7 +17,7 @@
 
 <div class="container">
     <h2>Add New Item</h2>
-    <form id="addNewItemForm">
+    <form id="addNewItemForm" action="/addnewitem" method="POST">
         <label for="taskTitle">Task Title:</label>
         <input id="taskTitle" name="taskTitle" required type="text">
 
@@ -34,15 +34,10 @@
             <option value="Low">Low</option>
         </select>
 
-        <button id="submitBtn" type="button">Submit</button>
+        <input type="submit" value="Submit">
     </form>
 </div>
 
-<script>
-    document.getElementById('submitBtn').addEventListener('click', function () {
-        // Redirect back to the main page (TaskManagementPage.html)
-        window.location.href = './TaskManagementPage';
-    });
-</script>
+
 </body>
 </html>

@@ -29,11 +29,11 @@ router.post('/', async (req, res, err) => {
         res.redirect('/signup');//passwords don't match
     } else {
         let hashPass = await bcrypt.hash(pass, salt)
-        let create = await createUser(name, hashPass, email)
-        if (create === 'in use') {
+        let addUser = await createUser(name, hashPass, email)
+        if (addUser === 'in use') {
             console.log('email in use')
             res.redirect('/signup');//email in use
-        } else if (create === 'created') {
+        } else if (addUser === 'created') {
             console.log('created')
             res.redirect('/login');
         }
