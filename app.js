@@ -8,6 +8,7 @@ import signupRouter from './routes/signup.js';
 import loginRouter from './routes/login.js';
 import logoutRouter from './routes/logout.js';
 import taskManagementRouter from './routes/taskmanagement.js';
+import intTaskManagementRouter from './routes/interactivetaskmanagement.js';
 import addnewitemRouter from './routes/addnewitem.js';
 import cookieParser from 'cookie-parser'
 import session from 'express-session';
@@ -71,6 +72,7 @@ app.use('/signup', signupRouter);
 app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
 app.use('/taskmanagementpage', taskManagementRouter);
+app.use('/interactivetaskmanagementpage', intTaskManagementRouter);
 app.use('/addnewitem', addnewitemRouter);
 
 //Catch all route to redirect to the main page if a not defined route is attempted

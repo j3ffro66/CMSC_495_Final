@@ -13,9 +13,8 @@ router.get('/', (req, res) => {
     //If a session is in progress, the page will redirect to the task management page
     if (req.session.user === undefined) {
         res.sendFile((__dirname + '/views/login.html'));
-
     } else {
-        res.redirect('/TaskManagementPage')
+        res.redirect('/interactivetaskmanagementpage')
     }
 });
 
@@ -35,7 +34,7 @@ router.post('/', async (req, res) => {
         req.session.user = auth;
         currentUser = await getUserById(auth);// !!!!!this is wrong and needs to be saved to session
         console.log(currentUser)
-        res.redirect('/TaskManagementPage');
+        res.redirect('/interactivetaskmanagementpage');
     }
 });
 
