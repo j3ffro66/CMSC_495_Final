@@ -21,10 +21,15 @@ export async function createUser(username, password, email) {
 //Read
 
 export async function getUserById(id) {
-    const [rows] = await pool.query(
-        'SELECT * FROM users WHERE userId= ?'
-        , [id])
-    return rows
+    return new Promise(function (resolve) {
+        pool.query('SELECT DISTINCT email FROM users WHERE userId =  ?', [id], (error, results) => {
+            // If there is an issue with the query, output the error
+            if (error) throw error;
+            console.log(results)
+            resolve(results[0]['email'])
+            })
+
+    })
 }
 
 // const user = await getUserById(101001)

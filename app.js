@@ -12,6 +12,7 @@ import addnewitemRouter from './routes/addnewitem.js';
 import cookieParser from 'cookie-parser'
 import session from 'express-session';
 import * as dotenv from 'dotenv';
+import {currentUser} from "./routes/login.js";
 
 dotenv.config();
 const app = express();
@@ -39,6 +40,7 @@ const __filename = fileURLToPath(import.meta.url);
 export const __dirname = path.dirname(__filename);
 app.use(express.static(__dirname + '/public'));
 
+
 // Used to log requests to the server Data, type, url, status, who
 let middleLogger = (req, res, next) => {
     let current_datetime = new Date();
@@ -51,7 +53,7 @@ let middleLogger = (req, res, next) => {
     let method = req.method;
     let url = req.url;
     let status = res.statusCode;
-    let log = `[${formatted_date}] | ${method}:${url} | ${status} | User ID: ${req.session.user}`;
+    let log = `[${formatted_date}] | ${method}:${url} | ${status} | User ID: ${currentUser}`;
     console.log(log);
     fs.appendFile("request_logs.txt", log + "\n", err => {
         if (err) {

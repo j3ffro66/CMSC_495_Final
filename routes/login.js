@@ -4,6 +4,7 @@ import sanitizeHtml from 'sanitize-html';
 import {__dirname} from "../app.js";
 import authController from "../controllers/authController.js";
 import bcrypt from 'bcryptjs'
+import {getUserById} from "../controllers/userController.js";
 
 const router = express.Router();
 
@@ -32,9 +33,11 @@ router.post('/', async (req, res) => {
         res.redirect('/login')
     } else  {
         req.session.user = auth;
-
+        currentUser = await getUserById(auth);// !!!!!this is wrong and needs to be saved to session
+        console.log(currentUser)
         res.redirect('/TaskManagementPage');
     }
 });
 
+export let currentUser = undefined;
 export default router;
