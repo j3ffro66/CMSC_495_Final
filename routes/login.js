@@ -6,13 +6,14 @@ import authController from "../controllers/authController.js";
 import bcrypt from 'bcryptjs'
 import {getUserById} from "../controllers/userController.js";
 
+
 const router = express.Router();
 
 //Getter method to show login page
 router.get('/', (req, res) => {
     //If a session is in progress, the page will redirect to the task management page
     if (req.session.user === undefined) {
-        res.sendFile((__dirname + '/views/login.html'));
+        res.render('login', {message:''});
     } else {
         res.redirect('/interactivetaskmanagementpage')
     }
@@ -21,7 +22,6 @@ router.get('/', (req, res) => {
 //POST method to authenticate to the task management page
 router.post('/', async (req, res) => {
     //Hash the password and sanitize input to protect from XSS or SQL Injection
-    const salt = await bcrypt.genSalt(10)
     const {email = sanitizeHtml(req.body.email), pass = sanitizeHtml(req.body.password)} = req.body;
 
     //Check the database for a matching user
@@ -29,12 +29,12 @@ router.post('/', async (req, res) => {
 
     //If there is a match, redirect to task management page, if not redirect to login page
     if (auth === 'unauthorized') {
-        res.redirect('/login')
+        res.render('login', {message: 'Login Failed'})
     } else  {
         req.session.user = auth;
         currentUser = await getUserById(auth);// !!!!!this is wrong and needs to be saved to session
         console.log(currentUser)
-        res.redirect('/interactivetaskmanagementpage');
+        res.redirect('/inttaskmanagementpage');
     }
 });
 
