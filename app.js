@@ -8,12 +8,14 @@ import signupRouter from './routes/signup.js';
 import loginRouter from './routes/login.js';
 import logoutRouter from './routes/logout.js';
 import taskManagementRouter from './routes/taskmanagement.js';
-import intTaskManagementRouter from './routes/interactivetaskmanagement.js';
+import inttaskManagementRouter from './routes/taskmanagement.js';
 import addnewitemRouter from './routes/addnewitem.js';
 import cookieParser from 'cookie-parser'
 import session from 'express-session';
 import * as dotenv from 'dotenv';
 import {currentUser} from "./routes/login.js";
+
+import ejs from 'ejs';
 
 dotenv.config();
 const app = express();
@@ -22,6 +24,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
+
 
 
 // 5 minute logout timer
@@ -40,6 +43,8 @@ app.use(session({
 const __filename = fileURLToPath(import.meta.url);
 export const __dirname = path.dirname(__filename);
 app.use(express.static(__dirname + '/public'));
+app.engine('html', ejs.renderFile);
+app.set('view engine', 'html');
 
 
 // Used to log requests to the server Data, type, url, status, who
@@ -72,7 +77,8 @@ app.use('/signup', signupRouter);
 app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
 app.use('/taskmanagementpage', taskManagementRouter);
-app.use('/interactivetaskmanagementpage', intTaskManagementRouter);
+app.use('/inttaskmanagementpage', inttaskManagementRouter);
+
 app.use('/addnewitem', addnewitemRouter);
 
 //Catch all route to redirect to the main page if a not defined route is attempted

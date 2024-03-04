@@ -10,7 +10,8 @@ const router = express.Router();
 router.get('/', (req, res) => {
     //If a session is in progress, the page will redirect to the task management page
     if (req.session.user === undefined) {
-        res.sendFile(__dirname + '/views/signup.html');
+        //res.sendFile(__dirname + '/views/signup.html');
+        res.render('signup');
     } else {
         res.redirect('/TaskManagementPage')
     }
