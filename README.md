@@ -1,4 +1,4 @@
-                                              Welcome to CompleteList! 
+Welcome to CompleteList! 
 
 Completelist is a web application that provides a powerful to-do list and project management solution, including support for scrum projects. To start using the application, simply navigate to https://delightful-desert-030520003.4.azurestaticapps.net/ and sign up today for free!
 
