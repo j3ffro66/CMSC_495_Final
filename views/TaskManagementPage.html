@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>CompleteList - Task Status and Filtering Page</title>
-    <link href="/public/css/styles.css" rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet">
 
 </head>
 <body>
@@ -48,7 +48,33 @@
         <!-- Add more filters as needed -->
     </div>
 
-    <!-- Table to display tasks -->
+    <table id="taskTable">
+        <thead>
+        <tr>
+
+            <th>Task ID</th>
+            <th>Task Title</th>
+            <th>Due Date</th>
+            <th>Priority</th>
+            <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% for(var i=0; i
+        <message.length
+        % ; i++){>
+        <tr>
+            <td><%= message[i].taskId %></td>
+            <td><%= message[i].title %></td>
+            <td><%= message[i].dueDate %></td>
+            <td><%= message[i].priority %></td>
+            <td><%= message[i].status %></td>
+            <% } %>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Table to display tasks
     <table id="taskTable">
         <thead>
         <tr>
@@ -67,9 +93,10 @@
             <td>High</td>
             <td>In Progress</td>
         </tr>
-        <!-- Add more task rows as needed -->
+
         </tbody>
     </table>
+    -->
 </div>
 </body>
 </html>

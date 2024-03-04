@@ -14,8 +14,8 @@ router.get('/', async (req, res, err) => {
         let taskList = await getTasks()
 
         console.log(taskList)
-        //res.render('taskmanagement', { title: 'Task List', userData: taskList });
-        res.sendFile((__dirname + '/views/TaskManagementPage.html'));
+        res.render('TaskManagementPage', { message: taskList });
+        //res.sendFile((__dirname + '/views/TaskManagementPage.html'));
     }
 })
 
