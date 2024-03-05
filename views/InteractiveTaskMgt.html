@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CompleteList - Interactive Task Management</title>
+  <title>CompleteList - Scrum Planning </title>
   <link rel="stylesheet" href="/public/css/InteractiveStyles.css">
 </head>
+
 <body>
   <a href="./logout" class="logout-button">
     <img src="/images/User.PNG" alt="Logout" style="width: 40px; height: 40px;">
@@ -20,33 +21,30 @@
   </div>
 
   <div class="container">
-    <div class="task-list">
+    <div class="task-list backlog">
       <h3>Backlog</h3>
       <div class="task-items">
         <ul>
           <li draggable="true">Task 1 - Backlog</li>
           <li draggable="true">Task 2 - Backlog</li>
-          <!-- Add more backlog tasks as needed -->
         </ul>
       </div>
     </div>
-    <div class="task-list">
+    <div class="task-list in-progress">
       <h3>In Progress</h3>
       <div class="task-items">
-        <ul>
+        <ul id="in-progress-list">
           <li draggable="true">Task 3 - In Progress</li>
           <li draggable="true">Task 4 - In Progress</li>
-          <!-- Add more in-progress tasks as needed -->
         </ul>
       </div>
     </div>
-    <div class="task-list">
+    <div class="task-list completed">
       <h3>Completed</h3>
       <div class="task-items">
         <ul>
           <li draggable="true">Task 5 - Completed</li>
           <li draggable="true">Task 6 - Completed</li>
-          <!-- Add more completed tasks as needed -->
         </ul>
       </div>
     </div>
