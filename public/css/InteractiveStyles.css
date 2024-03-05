@@ -13,6 +13,10 @@ body {
   justify-content: space-between;
 }
 
+.task-container h3 {
+  text-align: center;
+}
+
 .task-list {
   flex: 1;
   padding: 10px;
