@@ -34,6 +34,11 @@ export async function getTaskByUId(userId) {
     return rows
 }
 
+export async function getTaskByPriority(priority) {
+    const [rows] = await pool.query('SELECT * FROM tasks WHERE priority= ?', [priority])
+    return rows
+}
+
 export async function getTaskByDate(date) {
     const [rows] = await pool.query('SELECT * FROM tasks WHERE dueDate= ?', [date])
     return rows
@@ -44,8 +49,8 @@ export async function getTaskByStatus(status) {
     return rows
 }
 
-export async function getTaskByPriority(priority) {
-    const [rows] = await pool.query('SELECT * FROM tasks WHERE priority= ?', [priority])
+export async function deleteTask(taskID) {
+    const [rows] = await pool.query('DELETE FROM tasks WHERE taskId = ?', [taskID])
     return rows
 }
 

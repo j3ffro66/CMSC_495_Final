@@ -29,8 +29,9 @@ body {
 /* Styles specific to the main page (TaskManagementPage.html) */
 #taskTable {
     margin-top: 20px;
+    margin-left: 225px;
     border-collapse: collapse;
-    width: 100%;
+    width: 80%;
 }
 
 #taskTable th, #taskTable td {
