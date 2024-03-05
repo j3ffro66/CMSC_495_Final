@@ -1,9 +1,7 @@
 // Import the required modules
 import express from 'express';
 import sanitizeHtml from 'sanitize-html';
-import {__dirname} from "../app.js";
 import authController from "../controllers/authController.js";
-import bcrypt from 'bcryptjs'
 import {getUserById} from "../controllers/userController.js";
 
 
@@ -15,7 +13,7 @@ router.get('/', (req, res) => {
     if (req.session.user === undefined) {
         res.render('login', {message:''});
     } else {
-        res.redirect('/interactivetaskmanagementpage')
+        res.redirect('/taskmanagementpage')
     }
 });
 
@@ -34,7 +32,7 @@ router.post('/', async (req, res) => {
         req.session.user = auth;
         currentUser = await getUserById(auth);// !!!!!this is wrong and needs to be saved to session
         console.log(currentUser)
-        res.redirect('/inttaskmanagementpage');
+        res.redirect('/taskmanagementpage');
     }
 });
 
