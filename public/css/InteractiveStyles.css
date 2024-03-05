@@ -8,31 +8,35 @@ body {
   display: flex;
   justify-content: space-between; /* Adjusts spacing between columns */
   align-items: flex-start;
-  margin-top: 150px;
-  max-width: calc(100% - 220px); /* Adjusted to fit within the page and accommodate the side panel */
-  margin-left: 250px; /* Added left margin to move the container to the right */
 }
 
 .task-list {
-  width: calc(33.33% - 10px); /* Adjusted to fit within the container and add spacing between columns */
+  flex: 1;
   padding: 10px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.task-items {
-  padding: 10px;
-}
-
-.task-list ul {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
 }
 
 .task-list h3 {
   margin-top: 0;
+}
+
+.task-items {
+  margin: 10 0 0 0px;
+}
+
+.task-items li {
+  background-color: white;
+  padding: 5px;
+  margin-bottom: 5px;
+  cursor: move;
+}
+
+.task-items li {
+  background-color: #f9f9f9
+}
+
+.task-items ul {
+  padding: 0;
+  list-style-type: none;
 }
 
 .filter-container {
@@ -118,7 +122,6 @@ button[type="submit"]:hover {
   position: fixed;
   top: 10px;
   right: 10px;
-  z-index: 9999;
 }
 
 .side-panel {
@@ -141,11 +144,4 @@ button[type="submit"]:hover {
   margin-bottom: 15px;
 }
 
-/* Additional styles for draggable tasks */
-.task-list-items li {
-  cursor: pointer;
-}
 
-.task-list-items li.dragged {
-  opacity: 0.5;
-}
