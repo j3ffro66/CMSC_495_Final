@@ -1,13 +1,16 @@
 /* Common styles for both pages */
 body {
-  background-color: #FCE4DE;
-  position: relative;
+  background-color: whitesmoke;
 }
 
-.container {
+.task-interactive {
+  background-image: url("../images/focus.jpg");
+  opacity: 0.9;
+}
+
+.task-container {
   display: flex;
-  justify-content: space-between; /* Adjusts spacing between columns */
-  align-items: flex-start;
+  justify-content: space-between;
 }
 
 .task-list {
@@ -20,7 +23,7 @@ body {
 }
 
 .task-items {
-  margin: 10 0 0 0px;
+  margin-top: 10px;
 }
 
 .task-items li {
@@ -30,13 +33,21 @@ body {
   cursor: move;
 }
 
-.task-items li {
-  background-color: #f9f9f9
-}
-
 .task-items ul {
   padding: 0;
   list-style-type: none;
+}
+/* Changes backgroung color of each section*/
+.task-list.backlog {
+  background-color: lightyellow;
+}
+
+.task-list.in-progress {
+  background-color: lightgreen;
+}
+
+.task-list.completed{
+  background-color: lightcoral;
 }
 
 .filter-container {
@@ -123,6 +134,7 @@ button[type="submit"]:hover {
   top: 10px;
   right: 10px;
 }
+/* We should do a button instead of side menu to reduce clutter.
 
 .side-panel {
   position: fixed;
@@ -135,7 +147,7 @@ button[type="submit"]:hover {
 }
 
 .side-panel select {
-  width: 120px; /* Adjusted width for thinner dropdowns */
+  width: 120px; 
   margin-bottom: 10px;
 }
 
@@ -143,5 +155,5 @@ button[type="submit"]:hover {
   width: 100%;
   margin-bottom: 15px;
 }
-
+*/
 

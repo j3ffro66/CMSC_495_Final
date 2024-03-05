@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="/public/css/InteractiveStyles.css">
 </head>
 
-<body>
+<body class="task-interactive">
   <a href="./logout" class="logout-button">
     <img src="/images/User.PNG" alt="Logout" style="width: 40px; height: 40px;">
   </a>
@@ -20,11 +20,11 @@
     <a href="./AddNewItem"><button id="createTaskBtn">ADD NEW ITEM</button></a>
   </div>
 
-  <div class="container">
+  <div class="task-container">
     <div class="task-list backlog">
       <h3>Backlog</h3>
       <div class="task-items">
-        <ul>
+        <ul id="backlog-list">
           <li draggable="true">Task 1 - Backlog</li>
           <li draggable="true">Task 2 - Backlog</li>
         </ul>
@@ -42,12 +42,15 @@
     <div class="task-list completed">
       <h3>Completed</h3>
       <div class="task-items">
-        <ul>
+        <ul id="completed-list">
           <li draggable="true">Task 5 - Completed</li>
           <li draggable="true">Task 6 - Completed</li>
         </ul>
       </div>
     </div>
   </div>
+  <!-- Disrupts drag/drop functionality. Revise.  
+    <script src="/routes/interactivetaskmanagement.js"></script> --> 
+  <script src="/taskDragAndDrop.js"></script>
 </body>
 </html>
