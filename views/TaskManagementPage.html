@@ -16,17 +16,16 @@
          style="position: fixed; top: 10px; left: 50%; transform: translateX(-50%); z-index: 9999;" title="Home">
 </a>
 <div class="side-panel">
-    <h3>View Options</h3>
-    <select id="viewOptions">
-        <option value="today">Today View</option>
-        <option value="weekly">Weekly View</option>
-        <option value="monthly">Monthly View</option>
-        <option value="completed">Completed Tasks</option>
-    </select>
+    <h3>Options</h3>
     <!-- Create Task Button -->
     <a href="./addnewitem">
         <button id="createTaskBtn">ADD NEW ITEM</button>
     </a>
+	
+	 <button id="createTaskBtn">Complete Task</button>
+	
+     <button id="createTaskBtn">Delete Task</button>
+    
 </div>
 
 <div class="container">
@@ -45,40 +44,39 @@
             <option value="Medium">Medium</option>
             <option value="Low">Low</option>
         </select>
+		<label for="priorityFilter">View:</label>
+		<select id="viewOptions">
+        <option value="today">Today View</option>
+        <option value="weekly">Weekly View</option>
+        <option value="monthly">Monthly View</option>
+        <option value="completed">Completed Tasks</option>
+    </select>
         <!-- Add more filters as needed -->
     </div>
 
-
-
-    <table id="taskTable">
-        <thead>
+   <table id="taskTable">
+    <thead>
         <tr>
-
-            <th>Task ID</th>
+            <th>Select</th>
             <th>Task Title</th>
             <th>Due Date</th>
             <th>Priority</th>
             <th>Status</th>
         </tr>
-        </thead>
-        <tbody>
-        <% for(var i=0; i
-        <message.length>
-        % ; i++){%>
+    </thead>
+    <tbody>
+        
         <tr>
-            <td><%= message[i].taskId %></td>
+		<% for(var i=0; i < message.length; i++){ %>
+            <td><input type="checkbox" class="task-checkbox"></td>
             <td><%= message[i].title %></td>
             <td><%= message[i].dueDate %></td>
             <td><%= message[i].priority %></td>
             <td><%= message[i].status %></td>
-            <td><a href="./deleteItem">
-                    <button id="DeleteTaskBtn">ADD NEW ITEM</button>
-                </a>
-            </td>
-            <% } %>
         </tr>
-        </tbody>
-    </table>
+        <% } %>
+    </tbody>
+</table>
 
     <!-- Table to display tasks
     <table id="taskTable">
