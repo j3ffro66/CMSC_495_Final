@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>CompleteList - Task Status and Filtering Page</title>
-    <link href="/public/css/styles.css" rel="stylesheet">
-
+    <link href="/css/styles.css" rel="stylesheet">
+    
 </head>
 <body>
 <a class="logout-button" href="./logout">
-    <img alt="Logout" src="/public/images/User.PNG" style="width: 40px; height: 40px;" title="Logout">
+    <img alt="Logout" src="/images/User.PNG" style="width: 40px; height: 40px;" title="Logout">
 </a>
 <a href="./TaskManagementPage">
-    <img alt="CompleteList Logo" src="/public/images/CompleteListLogo.png"
+    <img alt="CompleteList Logo" src="/images/CompleteListLogo.png"
          style="position: fixed; top: 10px; left: 50%; transform: translateX(-50%); z-index: 9999;" title="Home">
 </a>
 <div class="side-panel">
@@ -48,6 +48,8 @@
         <!-- Add more filters as needed -->
     </div>
 
+
+
     <table id="taskTable">
         <thead>
         <tr>
@@ -61,14 +63,18 @@
         </thead>
         <tbody>
         <% for(var i=0; i
-        <message.length
-        % ; i++){>
+        <message.length>
+        % ; i++){%>
         <tr>
             <td><%= message[i].taskId %></td>
             <td><%= message[i].title %></td>
             <td><%= message[i].dueDate %></td>
             <td><%= message[i].priority %></td>
             <td><%= message[i].status %></td>
+            <td><a href="./deleteItem">
+                    <button id="DeleteTaskBtn">ADD NEW ITEM</button>
+                </a>
+            </td>
             <% } %>
         </tr>
         </tbody>
