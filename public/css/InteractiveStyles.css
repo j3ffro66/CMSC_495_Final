@@ -1,38 +1,66 @@
 /* Common styles for both pages */
 body {
-  background-color: #FCE4DE;
-  position: relative;
+  background-color: whitesmoke;
 }
 
-.container {
+.task-interactive {
+  background-image: url("../images/focus.jpg");
+  opacity: 0.9;
+}
+
+.task-container {
   display: flex;
-  justify-content: space-between; /* Adjusts spacing between columns */
-  align-items: flex-start;
-  margin-top: 150px;
-  max-width: calc(100% - 220px); /* Adjusted to fit within the page and accommodate the side panel */
-  margin-left: 250px; /* Added left margin to move the container to the right */
+  justify-content: space-between;
+}
+
+.task-container h3 {
+  text-align: center;
 }
 
 .task-list {
-  width: calc(33.33% - 10px); /* Adjusted to fit within the container and add spacing between columns */
+  flex: 1;
   padding: 10px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.task-items {
-  padding: 10px;
-}
-
-.task-list ul {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
 }
 
 .task-list h3 {
   margin-top: 0;
+}
+
+.task-items {
+  margin-top: 10px;
+}
+
+.task-items li {
+  background-color: white;
+  padding: 5px;
+  margin-bottom: 5px;
+  cursor: move;
+}
+
+.task-items ul {
+  padding: 0;
+  list-style-type: none;
+}
+/* Changes backgroung color of each section*/
+.task-list.backlog {
+  background-color: lightyellow;
+}
+
+.task-list.in-progress {
+  background-color: lightgreen;
+}
+
+.task-list.completed{
+  background-color: lightcoral;
+}
+
+.TaskMgmtLogo {
+  position: fixed;
+  top: 2%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  max-width: 180px;
 }
 
 .filter-container {
@@ -118,8 +146,8 @@ button[type="submit"]:hover {
   position: fixed;
   top: 10px;
   right: 10px;
-  z-index: 9999;
 }
+/* We should do a button instead of side menu to reduce clutter.
 
 .side-panel {
   position: fixed;
@@ -132,7 +160,7 @@ button[type="submit"]:hover {
 }
 
 .side-panel select {
-  width: 120px; /* Adjusted width for thinner dropdowns */
+  width: 120px; 
   margin-bottom: 10px;
 }
 
@@ -140,12 +168,5 @@ button[type="submit"]:hover {
   width: 100%;
   margin-bottom: 15px;
 }
+*/
 
-/* Additional styles for draggable tasks */
-.task-list-items li {
-  cursor: pointer;
-}
-
-.task-list-items li.dragged {
-  opacity: 0.5;
-}
