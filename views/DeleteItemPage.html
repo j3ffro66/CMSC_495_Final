@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Add New Item - ComeleteList</title>
+    <link href="/public/css/styles.css" rel="stylesheet">
+</head>
+<body>
+<a class="logout-button" href="./logout">
+    <img alt="Logout" src="/images/User.PNG" style="width: 40px; height: 40px;" title="Logout">
+</a>
+<a href="./TaskManagementPage">
+    <img alt="CompleteList Logo" src="/images/CompleteListLogo.PNG"
+         style="position: fixed; top: 10px; left: 50%; transform: translateX(-50%); z-index: 9999;" title="Home">
+</a>
+
+<div class="container">
+    <h2>Add New Item</h2>
+    <form id="DeleteItemForm" action="/deleteItem" method="DELETE">
+        
+        <label for="taskId">Task ID:</label>
+        <input id="taskId" name="taskId" required type="text">
+
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+
+</body>
+</html>
