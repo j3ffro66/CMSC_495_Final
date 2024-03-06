@@ -32,11 +32,15 @@ pool.getConnection((err, connection) => {
     console.log('You are now connected...')
 })
 
+const options = {
+    key: fs.readFileSync('./cert/localhost.key'),
+    cert: fs.readFileSync('./cert/localhost.crt')
+};
 
 // Retrieve the port number from environment variables with a fallback to 3000 if not specified
 const PORT = process.env.PORT || 3000;
 // Initialize server
-const server = http.createServer(app);
+const server = http.createServer(options, app);
 
 // Start the server and listen on the specified port, logging a message to the console when the server is ready
 server.listen(process.env.PORT || 3000, () => console.log(`Server running on port ${PORT}`));
